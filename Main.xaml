@@ -1,4 +1,4 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="848.8,1173.6" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:uasc="clr-namespace:UiPath.Activities.System.Collections;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="933,1281" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:uasc="clr-namespace:UiPath.Activities.System.Collections;assembly=UiPath.System.Activities" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
       <x:String>System.Activities</x:String>
@@ -82,12 +82,12 @@
       <AssemblyReference>UiPath.Workflow</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="592,1108.8" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Main Sequence" sap:VirtualizedContainerService.HintSize="592,1216" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(x:String)" Name="L_UKCities" />
       <Variable x:TypeArguments="scg:List(x:String)" Name="L_SpainCities">
         <Variable.Default>
-          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="new List(of String) from {&quot;MADRID&quot;,&quot; valencia&quot;,&quot; BARCELONA&quot;}" />
+          <VisualBasicValue x:TypeArguments="scg:List(x:String)" ExpressionText="new List(of String) from {&quot;MADRID&quot;,&quot; valencia&quot;,&quot; BARCELONA,&quot;Espania&quot;}" />
         </Variable.Default>
       </Variable>
       <Variable x:TypeArguments="scg:List(x:String)" Name="AllCities" />
@@ -105,26 +105,33 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <uasc:BuildCollection x:TypeArguments="x:String" Items="{x:Null}" DisplayName="Build Collection" FirstItem="London" sap:VirtualizedContainerService.HintSize="529.6,174.4" sap2010:WorkflowViewState.IdRef="BuildCollection`1_1" Result="[L_UKCities]">
+    <uasc:BuildCollection x:TypeArguments="x:String" Items="{x:Null}" DisplayName="Build Collection" FirstItem="Manchester United" sap:VirtualizedContainerService.HintSize="530,173" sap2010:WorkflowViewState.IdRef="BuildCollection`1_1" Result="[L_UKCities]">
       <uasc:BuildCollection.NextItems>
         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
           <InArgument x:TypeArguments="x:String">MANCHESTER</InArgument>
         </scg:List>
       </uasc:BuildCollection.NextItems>
     </uasc:BuildCollection>
-    <uasc:MergeCollections x:TypeArguments="x:String" Collection="[L_UKCities]" DisplayName="Merge Collections" sap:VirtualizedContainerService.HintSize="529.6,174.4" sap2010:WorkflowViewState.IdRef="MergeCollections`1_1" Result="[AllCities]" SecondCollection="[L_SpainCities]" />
-    <InvokeMethod DisplayName="Invoke Method" sap:VirtualizedContainerService.HintSize="529.6,166.4" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="Sort">
+    <Sequence sap:VirtualizedContainerService.HintSize="530,284" sap2010:WorkflowViewState.IdRef="Sequence_3">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <uasc:MergeCollections x:TypeArguments="x:String" Collection="[L_UKCities]" DisplayName="Merge Collections" sap:VirtualizedContainerService.HintSize="388,164" sap2010:WorkflowViewState.IdRef="MergeCollections`1_1" Result="[AllCities]" SecondCollection="[L_SpainCities]" />
+    </Sequence>
+    <InvokeMethod DisplayName="Invoke Method" sap:VirtualizedContainerService.HintSize="530,168" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="Sort">
       <InvokeMethod.TargetObject>
         <InArgument x:TypeArguments="scg:List(x:String)">[AllCities]</InArgument>
       </InvokeMethod.TargetObject>
     </InvokeMethod>
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="[index]" DisplayName="For Each City" sap:VirtualizedContainerService.HintSize="529.6,504.8" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[AllCities]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="[index]" DisplayName="For Each City" sap:VirtualizedContainerService.HintSize="530,503" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[AllCities]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="City" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,367.2" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="496,366" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="TitleCaseTemp" />
               <Variable x:TypeArguments="scg:List(x:String)" Default="[new List(Of String)]" Name="AllCitiesTitleCase" />
@@ -134,7 +141,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+            <Assign sap:VirtualizedContainerService.HintSize="434,114" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[TitleCaseTemp]</OutArgument>
               </Assign.To>
@@ -142,7 +149,7 @@
                 <InArgument x:TypeArguments="x:String">[New List(Of String) From {System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(City.ToLower())}]</InArgument>
               </Assign.Value>
             </Assign>
-            <uasc:AppendItemToCollection x:TypeArguments="x:Object" Collection="[AllCitiesTitleCase]" DisplayName="Append Items to Collection" sap:VirtualizedContainerService.HintSize="433.6,164.8" sap2010:WorkflowViewState.IdRef="AppendItemToCollection`1_1" Result="[AllCitiesTitleCase]">
+            <uasc:AppendItemToCollection x:TypeArguments="x:Object" Collection="[AllCitiesTitleCase]" DisplayName="Append Items to Collection" sap:VirtualizedContainerService.HintSize="434,164" sap2010:WorkflowViewState.IdRef="AppendItemToCollection`1_1" Result="[AllCitiesTitleCase]">
               <uasc:AppendItemToCollection.Items>
                 <scg:List x:TypeArguments="InArgument(x:Object)" Capacity="4">
                   <InArgument x:TypeArguments="x:Object">[TitleCaseTemp]</InArgument>
